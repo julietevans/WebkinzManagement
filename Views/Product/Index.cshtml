@@ -1,0 +1,57 @@
+﻿@model WebkinzManagement.ViewModels.IndexViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutProduct.cshtml";
+}
+
+<h1>Products</h1>
+<a asp-action="Create" asp-controller="Product">Add a New Product</a>
+
+<div class="row">
+    @foreach(var item in Model.Products)
+    {
+        <div class="card" style="width: 15rem; margin: 25px; border: solid purple;">
+            <h5 class="card-header text-center">@Html.DisplayFor(modelitem => item.Name)</h5>
+            <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id"><img src="~/images/@Html.DisplayFor(modelitem => item.ImagePlush)" height="200" width="175"/></a>
+            <div class="card-body text-center">
+                <p>
+                    <a asp-action="Details" asp-controller="Product" asp-route-id="@item.Id">Details</a> | 
+                    <a asp-action="Edit" asp-controller="Product" asp-route-id="@item.Id">Edit</a> | 
+                    <a asp-action="Delete" asp-controller="Product" asp-route-id="@item.Id">Delete</a>
+                </p>
+            </div>
+        </div> 
+    }
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @* displays heading for column name *@
+                @Html.DisplayNameFor(temp=>temp.Products.Last().Name)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.Products)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelitem=>item.Name)</td>
+                <td>
+                    <img src="~/images/@Html.DisplayFor(modelitem => item.ImageAvatar)" height="30" width="25">
+                </td>
+                <td>
+                    <a asp-action="Details" asp-controller="Product" asp-route-id="@item.Id">Details</a>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-controller="Product" asp-route-id="@item.Id">Edit</a>
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-controller="Product" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

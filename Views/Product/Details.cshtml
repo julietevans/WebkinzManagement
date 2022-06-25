@@ -1,0 +1,54 @@
+﻿@model WebkinzManagement.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutProduct.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+    </dl>
+</div>
+<div style="padding: 10px;">
+    @if(Model.ImagePlush != " ")
+    {
+        <img src="~/Images/@Model.ImagePlush" height="400" width="350"/>
+    }
+    @if(Model.ImageAvatar != " ")
+    {
+        <img src="/Images/@Model.ImageAvatar" height="400" width="350"/>
+    }
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.Id  }) |
+    <a asp-action="Index">Back to List</a>
+</div>
